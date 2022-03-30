@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-slate-200">
+  <div class="flex flex-col bg-slate-200">
     <nav-bar />
     <Nuxt />
-    <TheFooter/>
+    <TheFooter class="mt-auto"/>
   </div>
 </template>
 

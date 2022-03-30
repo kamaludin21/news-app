@@ -5,15 +5,15 @@
     </div>
     <div class="scrollbar overflow-active h-96 w-full overflow-auto">
       <div
-        v-for="article in trendingNews.slice(3, 8)"
+        v-for="article in trendingNews.slice(2, 6)"
         :key="article.title"
         class="group articles-center flex items-center space-x-2 p-2 bg-slate-50 hover:bg-gray-200"
       >
-        <img class="h-20 w-1/4 border-white object-cover group-hover:border" :src="article.thumbnail" alt="" />
-        <div class="cursor-pointer">
-          <p class="text-sm font-medium leading-5">
+        <img class="h-20 w-1/4 border-white object-cover group-hover:border" :src="article.thumbnail" alt="" @error="errorImage" />
+        <div class="cursor-pointer grid">
+          <a :href="article.url" class="text-sm font-medium leading-5">
             {{ article.title }}
-          </p>
+          </a>
           <div class="inline-flex items-center">
             <p class="font-base mr-1 text-xs capitalize">{{ article.name }}</p>
           </div>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import img from 'assets/img/error.webp'
 export default {
   name: 'ArticleLists',
   components: {  },
@@ -68,9 +69,13 @@ export default {
       this.trendingNews = response.articles.map((article) => ({
         title: this.removeString(article.title),
         author: article.author,
+        url: article.url,
         thumbnail: article.urlToImage,
         name: article.source.name
       }))
+    },
+    errorImage(event) {
+      event.target.src = img;
     }
   }
 

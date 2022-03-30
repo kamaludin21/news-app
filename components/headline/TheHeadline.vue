@@ -4,9 +4,9 @@
       <div class="grid grid-flow-col md:grid-flow-row">
         <div class="col-span-1 mb-0 w-screen md:col-span-2 md:mb-2 md:w-full">
           <news-card class="h-52 w-full md:h-72" :thumbnail-image="filterMyArr(articles, 'thumbnail')[0]">
-            <h2 class="text-lg font-bold capitalize leading-6 md:text-2xl">
+            <a :href="filterMyArr(articles, 'url')[0]" target="_blank" class="cursor-pointer text-lg font-bold capitalize leading-6 md:text-2xl">
               {{ filterMyArr(articles, 'title')[0] }}
-            </h2>
+            </a>
             <div class="mt-2 inline-flex items-center bg-gray-600/60 w-fit px-2 py-1">
               <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'name')[0] }}</p>
             </div>
@@ -14,9 +14,9 @@
         </div>
         <div class="mr-0 w-screen md:mr-2 md:w-full">
           <news-card class="h-52 w-full md:h-48" :thumbnail-image="filterMyArr(articles, 'thumbnail')[1]">
-            <h2 class="text-lg font-bold capitalize leading-6 md:text-lg md:leading-5">
+            <a :href="filterMyArr(articles, 'url')[1]" class="text-lg font-bold capitalize leading-6 md:text-lg md:leading-5">
               {{ filterMyArr(articles, 'title')[1] }}
-            </h2>
+            </a>
             <div class="mt-2 inline-flex items-center bg-gray-600/60 w-fit px-2 py-1">
               <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'name')[1] }}</p>
             </div>
@@ -24,9 +24,9 @@
         </div>
         <div class="ml-0 w-screen md:ml-2 md:w-full">
           <news-card class="h-52 w-full md:h-48" :thumbnail-image="filterMyArr(articles, 'thumbnail')[2]">
-            <h2 class="text-lg font-bold capitalize leading-6 md:text-lg md:leading-5">
+            <a :href="filterMyArr(articles, 'url')[2]" class="text-lg font-bold capitalize leading-6 md:text-lg md:leading-5">
               {{ filterMyArr(articles, 'title')[2] }}
-            </h2>
+            </a>
             <div class="mt-2 inline-flex items-center bg-gray-600/60 w-fit px-2 py-1">
               <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'name')[2] }}</p>
               
@@ -75,7 +75,8 @@ export default {
         title: this.removeString(article.title),
         author: article.author,
         thumbnail: article.urlToImage,
-        name: article.source.name
+        name: article.source.name,
+        url: article.url,
       }))
     },
     removeString(title) {

@@ -12,9 +12,9 @@
       >
         <img class="h-24 w-2/5 border-white object-cover group-hover:border" :src="article.thumbnail" alt="" />
         <div class="cursor-pointer">
-          <p class="text-sm font-medium leading-5">
+          <a :href="article.url" class="text-sm font-medium leading-5">
             {{ article.title }}
-          </p>
+          </a>
           <div class="inline-flex items-center">
             <p class="font-base mr-1 text-xs capitalize">{{ article.name }}</p>
           </div>
@@ -59,6 +59,7 @@ export default {
       this.trendingNews = response.articles.map((article) => ({
         title: this.removeString(article.title),
         author: article.author,
+        url: article.url,
         thumbnail: article.urlToImage,
         name: article.source.name
       }))
@@ -66,6 +67,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-</style>

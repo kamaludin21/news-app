@@ -51,17 +51,18 @@ export default {
       ifScrollable: false,
       categories: [
         {
-          id: 1,
-          isActive: false,
-          name: 'Trending',
-          url: '/trending'
-        },
-        {
           id: 2,
           isActive: false,
           name: 'News',
           url: '/news'
         },
+        {
+          id: 1,
+          isActive: false,
+          name: 'Trending',
+          url: '/trending'
+        },
+        
         {
           id: 3,
           isActive: false,
