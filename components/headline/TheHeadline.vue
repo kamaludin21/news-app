@@ -68,15 +68,17 @@ export default {
   },
   methods: {
     async fetchSomething() {
-      const PATH_API =
-        'https://newsapi.org/v2/top-headlines?country=id&apiKey=6ae7b435d4ed484c842a9d022f2ddaf2&pageSize=3&sortBy=popularity&category=general'
+      // const PATH_API =
+      //   'https://newsapi.org/v2/top-headlines?country=id&apiKey=6ae7b435d4ed484c842a9d022f2ddaf2&pageSize=3&sortBy=popularity&category=general'
+      const PATH_API = 'https://api-berita-indonesia.vercel.app/kumparan/terbaru/'
       const response = await this.$axios.$get(PATH_API)
-      this.articles = response.articles.map((article) => ({
+      console.log(response.data.posts);
+      this.articles = response.data.posts.map((article) => ({
         title: this.removeString(article.title),
-        author: article.author,
-        thumbnail: article.urlToImage,
-        name: article.source.name,
-        url: article.url,
+        // author: article.author,
+        // thumbnail: article.urlToImage,
+        // name: article.source.name,
+        // url: article.url,
       }))
     },
     removeString(title) {
