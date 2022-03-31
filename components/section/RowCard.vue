@@ -1,17 +1,19 @@
 <template>
   <div class="py-6">
-    <title-section class="pb-4" title="Artikel Terkait" />
+    <title-section class="pb-4" title="Artikel Lain" />
     <div class="hidden-scrollbar flex w-full touch-auto space-x-2 overflow-x-auto overflow-y-hidden pl-2 md:pl-0">
-      <div v-for="article in trendingNews.slice(0, 4)" :key="article.title" class="h-min w-4/5 flex-none md:w-1/4 md:flex-1">
+      <div
+        v-for="article in trendingNews.slice(0, 4)"
+        :key="article.title"
+        class="h-min w-4/5 flex-none md:w-1/4 md:flex-1"
+      >
         <div
+        :style="{ backgroundImage: `url('${article.thumbnail}')` }"
           class="flex h-56 flex-1 items-end border bg-cover"
-          :style="{ backgroundImage: `url('${article.thumbnail}')` }"
+          
         >
-          <div class="bg-gradient-to-t from-black/70 p-2">
-            <div class="w-fit bg-black/50 px-1 py-0.5 mb-2">
-              <p class="text-xs font-semibold text-white">{{ article.name }}</p>
-            </div>
-            <a :href="article.url" class="text-base hover:underline font-medium text-slate-200 md:text-xl md:leading-5">
+          <div class="bg-gradient-to-t from-black/70 p-2 leading-3">
+            <a :href="article.url" class="text-lg font-medium text-slate-200 hover:underline">
               {{ article.title }}
             </a>
           </div>

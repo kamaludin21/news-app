@@ -2,7 +2,7 @@
   <div class="my-0 flex h-full flex-wrap space-y-6 px-0 pt-20 md:my-2 md:px-2 md:pt-24 lg:px-20 xl:px-56">
     <the-headline />
     <content-plus />
-    <sections-page title-section="business" />
+    <sections-page title-section="bisnis" source-one="tempo" source-two="suara" />
 
     <div class="py-4 w-full space-y-4 border-t-4 border-black bg-white p-2 shadow-md">
       <div class="flex w-full items-center justify-between">
@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <p class="flex-1 text-sm font-medium capitalize md:text-lg md:font-bold">
+          <p class="flex-1 text-sm font-medium capitalize md:text-base md:font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet veritatis expedita nisi error
           </p>
         </div>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <sections-page title-section="health" />
+    <sections-page title-section="tekno" source-one="sindonews" source-two="suara" />
     <row-card />
   </div>
 </template>

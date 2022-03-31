@@ -11,13 +11,11 @@
         class="group articles-center flex items-center space-x-2 p-2 hover:bg-gray-200"
       >
         <img class="h-24 w-2/5 border-white object-cover group-hover:border" :src="article.thumbnail" alt="" />
-        <div class="cursor-pointer">
+        <div class="cursor-pointer grid space-y-1">
           <a :href="article.url" class="text-sm font-medium leading-5">
             {{ article.title }}
           </a>
-          <div class="inline-flex items-center">
-            <p class="font-base mr-1 text-xs capitalize">{{ article.name }}</p>
-          </div>
+          <p class="font-base mr-1 text-xs capitalize">{{ article.category }}</p>
         </div>
       </div>
     </div>
@@ -48,20 +46,23 @@ export default {
   },
   methods: {
     removeString(title) {
+        const string = title
+        const newsTitle = string.split(' - ')[0]
+        return newsTitle;
+    },
+    getStrag(title) {
       const string = title
-      const newsTitle = string.split(' - ')[0]
-      return newsTitle;
+      const category = string.split('/')[3]
+      return category;
     },
     async fetchSomething() {
-      const PATH_API =
-        'https://newsapi.org/v2/top-headlines?country=id&apiKey=6ae7b435d4ed484c842a9d022f2ddaf2&pageSize=8&sortBy=popularity'
-      const response = await this.$axios.$get(PATH_API)
-      this.trendingNews = response.articles.map((article) => ({
+      const PATH_API = 'https://api-berita-indonesia.vercel.app/kumparan/terbaru/'
+      const response = await this.$axios.$get(PATH_API);
+      this.trendingNews = response.data.posts.map((article) => ({
         title: this.removeString(article.title),
-        author: article.author,
-        url: article.url,
-        thumbnail: article.urlToImage,
-        name: article.source.name
+        category: this.getStrag(article.link),
+        thumbnail: article.thumbnail,
+        url: article.link,
       }))
     }
   }

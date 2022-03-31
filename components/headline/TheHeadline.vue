@@ -8,7 +8,7 @@
               {{ filterMyArr(articles, 'title')[0] }}
             </a>
             <div class="mt-2 inline-flex items-center bg-gray-600/60 w-fit px-2 py-1">
-              <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'name')[0] }}</p>
+              <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'category')[0] }}</p>
             </div>
           </news-card>
         </div>
@@ -18,7 +18,7 @@
               {{ filterMyArr(articles, 'title')[1] }}
             </a>
             <div class="mt-2 inline-flex items-center bg-gray-600/60 w-fit px-2 py-1">
-              <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'name')[1] }}</p>
+              <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'category')[1] }}</p>
             </div>
           </news-card>
         </div>
@@ -28,7 +28,7 @@
               {{ filterMyArr(articles, 'title')[2] }}
             </a>
             <div class="mt-2 inline-flex items-center bg-gray-600/60 w-fit px-2 py-1">
-              <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'name')[2] }}</p>
+              <p class="font-base mr-1 text-xs capitalize">{{ filterMyArr(articles, 'category')[2] }}</p>
               
             </div>
           </news-card>
@@ -68,23 +68,24 @@ export default {
   },
   methods: {
     async fetchSomething() {
-      // const PATH_API =
-      //   'https://newsapi.org/v2/top-headlines?country=id&apiKey=6ae7b435d4ed484c842a9d022f2ddaf2&pageSize=3&sortBy=popularity&category=general'
       const PATH_API = 'https://api-berita-indonesia.vercel.app/kumparan/terbaru/'
       const response = await this.$axios.$get(PATH_API)
-      console.log(response.data.posts);
       this.articles = response.data.posts.map((article) => ({
         title: this.removeString(article.title),
-        // author: article.author,
-        // thumbnail: article.urlToImage,
-        // name: article.source.name,
-        // url: article.url,
+        category: this.getStrag(article.link),
+        thumbnail: article.thumbnail,
+        url: article.link,
       }))
     },
     removeString(title) {
+        const string = title
+        const newsTitle = string.split(' - ')[0]
+        return newsTitle;
+    },
+    getStrag(title) {
       const string = title
-      const newsTitle = string.split(' - ')[0]
-      return newsTitle;
+      const category = string.split('/')[3]
+      return category;
     },
     filterMyArr(myArr, prop) {
       return myArr.map((obj) => obj[prop])

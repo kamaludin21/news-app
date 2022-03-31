@@ -6,10 +6,7 @@
         :style="{ backgroundImage: `url('${filterMyArr(articles, 'thumbnail')[0]}')` }"
         class="flex h-48 flex-none items-end bg-red-400 bg-cover bg-center md:h-auto md:flex-1"
       >
-        <div class="space-y-2 bg-gradient-to-t via-black from-black p-2">
-          <div class="w-fit bg-black/50 px-2">
-            <p class="text-white">{{ filterMyArr(articles, 'name')[0] }}</p>
-          </div>
+        <div class="bg-gradient-to-t via-black/70 from-black/80 p-2">
           <a :href="filterMyArr(articles, 'url')[0]" class="text-xl font-bold leading-6 text-slate-200">
             {{ filterMyArr(articles, 'title')[0] }}
           </a>
@@ -18,24 +15,19 @@
       <div class="flex md:hidden">
         <article-lists
           class="h-auto w-full"
-          sort-type="Trending"
-          :category-articles="titleSection"
-          :category="titleSection"
+          :category=titleSection
+          source="tempo"
         />
       </div>
       <article-lists
         class="hidden h-96 flex-1 md:flex"
-        sort-type="Trending"
-        :category-articles="titleSection"
-        :category="titleSection"
-        sort-by-articles="popularity"
+        :category=titleSection
+        :source=sourceOne
       />
       <article-lists
         class="hidden h-96 flex-1 md:flex"
-        sort-type="Terbaru"
-        :category-articles="titleSection"
-        :category="titleSection"
-        sort-by-articles="publishedAt"
+        :category=titleSection
+        :source=sourceTwo
       />
     </div>
   </div>
@@ -52,7 +44,15 @@ export default {
     titleSection: {
       type: String,
       default: 'General'
-    }
+    },
+    sourceOne: {
+      type: String,
+      default: 'General'
+    },
+    sourceTwo: {
+      type: String,
+      default: 'General'
+    },
   },
   data() {
     return {
@@ -64,16 +64,20 @@ export default {
   },
   methods: {
     async fetchSomething() {
-      const PATH_API =
-        'https://newsapi.org/v2/top-headlines?country=id&apiKey=6ae7b435d4ed484c842a9d022f2ddaf2&pageSize=3&sortBy=popularity&category='+this.titleSection+''
+      const PATH_API = 'https://api-berita-indonesia.vercel.app/'+this.sourceOne+ '/' + this.titleSection
+      console.log(PATH_API)
       const response = await this.$axios.$get(PATH_API)
-      this.articles = response.articles.map((article) => ({
+      this.articles = response.data.posts.map((article) => ({
         title: this.removeString(article.title),
-        author: article.author,
-        url: article.url,
-        thumbnail: article.urlToImage,
-        name: article.source.name
+        name: this.getStrag(article.link),
+        url: article.link,
+        thumbnail: article.thumbnail
       }))
+    },
+    getStrag(title) {
+      const string = title
+      const category = string.split('/')[3]
+      return category;
     },
     removeString(title) {
       const string = title
