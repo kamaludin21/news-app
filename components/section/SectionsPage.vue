@@ -65,7 +65,6 @@ export default {
   methods: {
     async fetchSomething() {
       const PATH_API = 'https://api-berita-indonesia.vercel.app/'+this.sourceOne+ '/' + this.titleSection
-      console.log(PATH_API)
       const response = await this.$axios.$get(PATH_API)
       this.articles = response.data.posts.map((article) => ({
         title: this.removeString(article.title),
