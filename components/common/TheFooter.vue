@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="flex flex-col md:flex-row w-full justify-between items-center mt-20 py-14 bg-slate-800 px-2 lg:px-20 xl:px-56"
+    class="flex flex-col md:flex-row items-start w-full justify-between mt-20 py-14 bg-slate-800 px-2 lg:px-20 xl:px-56"
   >
     <div class="w-full md:w-1/3">
       <img src="../../assets/img/coiled-dark.png" class="w-72" alt="" />
@@ -11,11 +11,13 @@
         <a href="https://www.wired.com/" class="link">wired</a>
       </p>
       <hr class="my-2" />
-      <a href="https://github.com/kamaludin21" class="link">Github</a>
+      <div class="bg-gray-600 p-2 rounded-md w-fit ">
+        <a href="https://github.com/kamaludin21" class="link">Github</a>
       <span class="text-bold px-2">&bull;</span>
       <a href="https://twitter.com/KamalZyel" class="link">Twitter</a>
+      </div>
     </div>
-    <div class="flex justify-end w-full md:w-2/3 space-x-8 text-sm">
+    <div class="flex flex-col md:flex-row justify-end w-full md:w-2/3 space-x-0 space-y-4 md:space-y-0 md:space-x-8 text-sm">
       <div class="text-gray-300">
         <ul class="space-y-1">
           <li>Facebook</li>

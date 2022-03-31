@@ -1,7 +1,7 @@
 <template>
-  <div class="py-6">
+  <div class="py-4 w-full">
     <title-section class="pl-2 md:pl-0 pb-4" title="Artikel Lain" />
-    <div class="hidden-scrollbar flex w-full touch-auto space-x-2 overflow-x-auto overflow-y-hidden pl-2 md:pl-0">
+    <div class="hidden-scrollbar pl-2 flex w-full touch-auto space-x-2 overflow-x-auto overflow-y-hidden md:pl-0">
       <div
         v-for="article in trendingNews.slice(0, 4)"
         :key="article.title"
