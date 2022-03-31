@@ -14,7 +14,7 @@
       </div>
       <div class="flex md:hidden">
         <article-lists
-          class="h-auto w-full"
+          class="h-96 w-full"
           :category=titleSection
           source="tempo"
         />

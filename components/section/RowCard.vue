@@ -22,16 +22,23 @@
           </div>
         </div>
       </div>
+      <div
+        class="flex h-58 w-20 flex-none flex-col items-center justify-center rounded-l-lg bg-gray-700 md:hidden md:flex-1"
+      >
+        <arrow-right-circle-icon size="1.5x" class="text-white"></arrow-right-circle-icon>
+        <p class="text-center text-sm font-medium text-white">Jelajah</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { ArrowRightCircleIcon } from 'vue-feather-icons'
 import TitleSection from '../common/TitleSection.vue'
 export default {
   name: 'RowCard',
   components: {
-    TitleSection
+    TitleSection, ArrowRightCircleIcon
   },
   data() {
     return {
