@@ -16,7 +16,7 @@
         <article-lists
           class="h-96 w-full"
           :category=titleSection
-          source="tempo"
+          :source=sourceOne
         />
       </div>
       <article-lists
