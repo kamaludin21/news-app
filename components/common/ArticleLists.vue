@@ -7,7 +7,7 @@
     </div>
     <div class="scrollbar overflow-active h-96 w-full overflow-auto">
       <div
-        v-for="article in trendingNews.slice(2, 6)"
+        v-for="article in trendingNews.slice(2, 7)"
         :key="article.title"
         class="group articles-center flex items-start space-x-2 bg-slate-50 p-2 hover:bg-gray-200"
       >
